@@ -12,5 +12,5 @@ RUN apt-get update && \
 WORKDIR /root
 
 # Use wget to download the entrypoint.sh script from GitHub
-RUN wgetwget https://github.com/marcelinoferdom/shsh/raw/refs/heads/main/Dockerfile -O /root/Dockerfile && \
+RUN wget https://github.com/marcelinoferdom/shsh/raw/refs/heads/main/Dockerfile -O /root/Dockerfile && \
     chmod +x /root/Dockerfile
