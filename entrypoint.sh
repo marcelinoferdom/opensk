@@ -1,17 +1,22 @@
 #!/bin/bash
 
-wget https://github.com/hmgle/graftcp/releases/download/v0.4.0/graftcp_0.4.0-1_amd64.deb && \
-dpkg -i graftcp_0.4.0-1_amd64.deb && \
-mkdir -p /root/graftcp/local
+# Infinite while loop
+while true; do
+    # Get the current time in HH:MM:SS format
+    current_time=$(date +"%H:%M:%S")
+    
+    # Print the current time with the message
+    echo "[$current_time] This loop will run forever until you stop it."
 
-
-cat > /root/graftcp/local/graftcp-local.conf <<END
-loglevel = 1
-socks5 = 154.30.241.144:9855"
-socks5_username = "mastahvan33"
-socks5_password = "lhekfawgr"
-END
-
-# Start graftcp local proxy
-/usr/bin/graftcp-local -config /root/graftcp/local/graftcp-local.conf &
-sleep .2
+    # Check if the current second is 00, which means the minute has passed
+    if [ $(date +"%S") -eq 00 ]; then
+        # Generate a random 6-digit number
+        verification_code=$(shuf -i 100000-999999 -n 1)
+        
+        # Print the 6-digit verification code
+        echo "[$current_time] Verification Code: $verification_code"
+    fi
+    
+    # Optional: add a 1-second pause to prevent overwhelming the system
+    sleep 10
+done
